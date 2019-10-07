@@ -3,8 +3,11 @@ let r //red color
 let g
 let b
 let mike
+let song;
+
 function setup(){
 createCanvas(600,600 )
+song = loadSound("Boom_Chuk.mp3")
 mike = new p5.AudioIn()
 mike.start()
 }
@@ -32,5 +35,12 @@ function mousePressed(){
   r = random(256)
   g = random(256)
   b = random(256)
-
+  if (song.isPlaying()) {
+     // .isPlaying() returns a boolean
+     song.stop();
+     background(255, 0, 0);
+   } else {
+     song.play();
+     background(0, 255, 0);
+   }
 }
